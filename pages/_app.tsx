@@ -1,25 +1,19 @@
-import { Box, Container, Stack } from "@mui/material";
-import { brown, green } from "@mui/material/colors";
 
-export default function Home() {
+import type { AppProps } from "next/app";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import { light } from "../scss/MaterialTheme";
+import { useState } from "react";
+
+export default function App({ Component, pageProps }: AppProps) {
+  // @ts-ignore
+  const [theme, setTheme] = useState(createTheme(light));
+
+  // Socket.io, Redux, Mui ...
   return (
-    <>
-      <Stack sx={{ background: "#81c784" }}>
-        Header
-      </Stack>
-
-      <Container>
-        <Stack flexDirection="column">
-          <Box>Popular Properties</Box>
-          <Box>Top Agents</Box>
-          <Box>Top Properties</Box>
-          <Box>Events</Box>
-        </Stack>
-      </Container>
-
-      <Stack sx={{ background: "#a1887f" }}>
-        Footer
-      </Stack>
-    </>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Component {...pageProps} />
+    </ThemeProvider>
   );
 }

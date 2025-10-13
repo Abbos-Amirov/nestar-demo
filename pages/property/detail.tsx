@@ -3,8 +3,8 @@ import { Container } from "@mui/material"
 import { NextPage } from "next"
 
 
-const PropertyList: NextPage = () => {
-    return <Container>PROPERTY keldi</Container>
+const PropertyDetail = () => {
+    return <Container>PROPERTY DETAIL</Container>
 }
 
-export default withLayoutBasic(PropertyList)
+export default withLayoutBasic( PropertyDetail)

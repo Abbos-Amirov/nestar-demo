@@ -1,19 +1,21 @@
+import withLayoutMain from "@/libs/components/layout/LayoutHome";
+import { Box, Container, Stack } from "@mui/material";
+import { brown, green } from "@mui/material/colors";
+import { NextPage } from "next";
 
-import type { AppProps } from "next/app";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material";
-import { light } from "../scss/MaterialTheme";
-import { useState } from "react";
-
-export default function App({ Component, pageProps }: AppProps) {
-  // @ts-ignore
-  const [theme, setTheme] = useState(createTheme(light));
-
-  // Socket.io, Redux, Mui ...
+const  Home: NextPage =  () => {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <>
+      <Container>
+        <Stack flexDirection="column">
+          <Box>Popular Properties</Box>
+          <Box>Top Agents</Box>
+          <Box>Top Properties</Box>
+          <Box>Events</Box>
+        </Stack>
+      </Container>
+    </>
   );
 }
+
+export default withLayoutMain(Home)
