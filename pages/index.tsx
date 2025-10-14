@@ -6,8 +6,8 @@ import { NextPage } from "next";
 const  Home: NextPage =  () => {
   return (
     <>
-      <Container>
-        <Stack flexDirection="column">
+     
+        <Stack className={"home-page"}>
       <Stack>
       <Stack className="container"> Popular Properties </Stack>
       </Stack>
@@ -21,7 +21,7 @@ const  Home: NextPage =  () => {
       </Stack>
 
       
-      </Container>
+     
     </>
   );
 }
