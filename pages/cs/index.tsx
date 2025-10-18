@@ -3,13 +3,12 @@ import { Stack } from "@mui/material";
 import { NextPage } from "next";
 import { useState } from "react";
 
-const Community: NextPage= () => {  
-  
+const CS: NextPage= () => {  
   return (
     <div style={{margin:"30px 0"}}>
-        <Stack className="container">Communtiy</Stack>
+        <Stack className="container">CS</Stack>
         </div>
   );
 };
 
-export default withLayoutBasic(Community)
+export default withLayoutBasic(CS)
