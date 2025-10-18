@@ -3,6 +3,9 @@ import Head from "next/head";
 import Top from "../Top";
 import Footer from "../Footer";
 import HeaderFilter from "../homePage/HeaderFilter";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 
 const withLayoutMain = (Component: any) => {
@@ -24,6 +27,7 @@ const withLayoutMain = (Component: any) => {
           <Stack className="container">
             <HeaderFilter />
           </Stack>
+
           </Stack>
 
        
