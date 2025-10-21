@@ -6,44 +6,79 @@ import HeaderFilter from "../homePage/HeaderFilter";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import useDeviceDetect from "@/libs/hooks/useDeviceDetect";
 
 
 const withLayoutMain = (Component: any) => {
   return (props: any) => {
-    return (
-      <>
-        <Head>
-          <title>Nestar</title>
-        </Head>
 
-        <Stack id="pc-wrap">
-          {/* === Header Top === */}
-          <Stack id="top">
-            <Top />
+    const device = useDeviceDetect();
+
+    if(device === "mobile"){
+
+      return (
+        <>
+          <Head>
+            <title>Nestar</title>
+          </Head>
+  
+          <Stack id="mobile-wrap">
+            {/* === Header Top === */}
+            <Stack id="top">
+              <Top />
+            </Stack>
+  
+            {/* === Main Content === */}
+            <Stack id="main">
+              <Component {...props} />
+            </Stack>
+  
+            {/* === Footer === */}
+            <Stack id="footer">
+              <Footer />
+            </Stack>
           </Stack>
+        </>
+      );
+      
+    }else{
 
-          
-          <Stack className="header-main">
-          <Stack className="container">
-            <HeaderFilter />
+      return (
+        <>
+          <Head>
+            <title>Nestar</title>
+          </Head>
+  
+          <Stack id="pc-wrap">
+            {/* === Header Top === */}
+            <Stack id="top">
+              <Top />
+            </Stack>
+  
+            
+            <Stack className="header-main">
+            <Stack className="container">
+              <HeaderFilter />
+            </Stack>
+  
+            </Stack>
+  
+         
+  
+            {/* === Main Content === */}
+            <Stack id="main">
+              <Component {...props} />
+            </Stack>
+  
+            {/* === Footer === */}
+            <Stack id="footer">
+              <Footer />
+            </Stack>
           </Stack>
-
-          </Stack>
-
-       
-
-          {/* === Main Content === */}
-          <Stack id="main">
-            <Component {...props} />
-          </Stack>
-
-          {/* === Footer === */}
-          <Stack id="footer">
-            <Footer />
-          </Stack>
-        </Stack>
-      </>
-    );
+        </>
+      );
+    }
+  
   };
 };
 

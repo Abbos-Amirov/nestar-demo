@@ -3,52 +3,71 @@ import { Box, Stack } from "@mui/material";
 import Link from "next/link";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import useDeviceDetect from "../hooks/useDeviceDetect";
 
 const Top = () => {
-  return (
-    <Stack className="navbar">
-      <Stack className="navbar-main">
-        <Stack className="container">
-          {/* === Logo Section === */}
-          <Box component="div" className="logo-box">
-            <Link href="/">
-              <img src="/img/logo/logoWhite.svg" alt="logo" />
-            </Link>
-          </Box>
+  const device = useDeviceDetect();
+  if(device === "mobile"){
+        return(
+          <Stack className="navbar">
 
-          {/* === Router Section === */}
-          <Box component="div" className="router-box">
-            <Link  href="/"><div>Home</div></Link>
-            <Link href="/property"><div>Properties</div></Link>
-            <Link href="/agent"><div>Agents</div></Link>
-            <Link href="/community?articleCategory=FREE"><div>Community</div></Link>
-            <Link href="/cs"><div>CS</div></Link>
-          </Box>
+          <Link  href="/"><div>Home</div></Link>
+         <Link href="/property"><div>Properties</div></Link>
+         <Link href="/agent"><div>Agents</div></Link>
+         <Link href="/community?articleCategory=FREE"><div>Community</div></Link>
+         <Link href="/cs"><div>CS</div></Link>
+         </Stack>
+        )
 
-          {/* === User Box / Logout === */}
-          <Box component="div" className="user-box">
-            <div className="login-user">
-              <img src="/img/profile/defaultUser.svg" alt="user" />
-            </div>
+  }else{
 
-            <Menu
-              id="basic-menu"
-              sx={{ mt: "5px" }}
-              open={false}  // bu keyinchalik state bilan boshqariladi
-            >
-              <MenuItem>
-                <Logout
-                  fontSize="small"
-                  style={{ color: "blue", marginRight: "10px" }}
-                />
-                Logout
-              </MenuItem>
-            </Menu>
-          </Box>
+    return (
+      <Stack className="navbar">
+        <Stack className="navbar-main">
+          <Stack className="container">
+            {/* === Logo Section === */}
+            <Box component="div" className="logo-box">
+              <Link href="/">
+                <img src="/img/logo/logoWhite.svg" alt="logo" />
+              </Link>
+            </Box>
+  
+            {/* === Router Section === */}
+            <Box component="div" className="router-box">
+              <Link  href="/"><div>Home</div></Link>
+              <Link href="/property"><div>Properties</div></Link>
+              <Link href="/agent"><div>Agents</div></Link>
+              <Link href="/community?articleCategory=FREE"><div>Community</div></Link>
+              <Link href="/cs"><div>CS</div></Link>
+            </Box>
+  
+            {/* === User Box / Logout === */}
+            <Box component="div" className="user-box">
+              <div className="login-user">
+                <img src="/img/profile/defaultUser.svg" alt="user" />
+              </div>
+  
+              <Menu
+                id="basic-menu"
+                sx={{ mt: "5px" }}
+                open={false}  // bu keyinchalik state bilan boshqariladi
+              >
+                <MenuItem>
+                  <Logout
+                    fontSize="small"
+                    style={{ color: "blue", marginRight: "10px" }}
+                  />
+                  Logout
+                </MenuItem>
+              </Menu>
+            </Box>
+          </Stack>
         </Stack>
       </Stack>
-    </Stack>
-  );
+    );
+
+  }
+ 
 };
 
 export default Top;
